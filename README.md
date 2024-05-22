@@ -1,4 +1,3 @@
 # YetGenCorePython
 Eğitimin ilk haftası
-## ABC
-### bf
+## Her hafta için ayrıca dosya oluşturuldu.
