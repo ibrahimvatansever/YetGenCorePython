@@ -1,6 +1,8 @@
 import time 
 import calendar
 print("Hoşgeldiniz.\nLütfen havalimanları seçiminizi yapınız.")
+
+# Kodun daha doğal durması için time kütüphanesi ile işlemler arasında geçiş süresi sağladık.
 time.sleep(1)
 havalimanlari={ 
     1:"Ankara Esenboğa Havalimanı",
@@ -8,6 +10,8 @@ havalimanlari={
     3:"Van Ferit Melen Havalimanı",
     4:"Izmir Adnan Menderes Havalimanı",
     5:"Fraport Tav Antalya Havalimanı"}
+
+# While döngüsü ile kalkış ve varış havalimanlarını kullanıcıya seçtirdik.
 while True:
     print("Havalimanları:")
     for key,value in havalimanlari.items():
@@ -36,6 +40,8 @@ while True:
 time.sleep(1)
 print(f"{kalkış_havalimanı}-{varış_havalimanı} arası uçuşunuz için lütfen diğer işlemlere devam ediniz")
 time.sleep(1)
+
+# If-else kullanarak kullanıcının tarih seçmesini sağladık.
 print(" ")
 print("Lütfen tarih seçiniz")
 while True:
@@ -54,6 +60,8 @@ while True:
     else :
         ayı=aylar[ay]
         break
+
+# calendar kütüphanesi kullanarak takvim oluşturduk ve ekrana yazdırdık.
 a=calendar.TextCalendar(calendar.MONDAY)
 b=a.formatmonth(yıl,ay)
 print(b)
@@ -83,6 +91,8 @@ while True:
             break
         else:
             print("Gün seçerken hata yaptınız.Lütfen tekrar gün seçiniz.")
+
+# Her iki farklı havalimanı arası uçuş saatlerini belirledik ve sözlükle tanımladık, kullanıcıya bunlardan seçim yaptırdık.
 while True:
     havalimanlari_listesi=["Ankara Esenboğa Havalimanı","İstanbul Sabiha Gökçen Havalimanı","Van Ferit Melen Havalimanı",
                             "Izmir Adnan Menderes Havalimanı","Fraport Tav Antalya Havalimanı"]
@@ -315,6 +325,7 @@ print(" ")
 time.sleep(1)
 print("Lütfen bilet türünü ve sınıfını seçiniz.")
 
+# Yetişkin ve çocuk, ekonomi ve prime olarak sınıflar tanımladık.
 class Sınıf:
     def __init__(self, bilet_türü=None, koltuk_sınıfı=None):
         self.bilet_türü = bilet_türü
@@ -352,6 +363,8 @@ class Sınıf:
                 break
             else:
                 print("Geçersiz seçim. Lütfen doğru bir bilet sınıfı seçiniz.")
+
+# Kullanıcının tercihlerine göre fiyatı güncelledik.
 class Fiyat(Sınıf):
     def __init__(self, bilet_türü=None, koltuk_sınıfı=None, fiyat=2000):
         super().__init__(bilet_türü, koltuk_sınıfı)
@@ -371,11 +384,15 @@ bilet.biletTürü()
 bilet.koltukSınıfı()
 bilet_fiyatı = Fiyat(bilet.bilet_türü, bilet.koltuk_sınıfı)
 bilet_fiyatı.bilet_fiyat()
+
+# Kullanıcıdan kişi bilgilerini aldık.
 def kişi_bilgileri():
     ad=str(input("Lütfen adınızı giriniz:"))
     soyad=str(input("Lütfen soyadınızı giriniz:"))
     tc=int(input("Lütfen 11 haneli kimlik numaranızı giriniz:"))
     yaş=int(input("Lütfen yaşınızı giriniz:"))
+
+# Kişi ve uçuş bilgilerini içeren bileti her kullanıcı için ayrı dosyalara kaydettik.
     with open(f"{tc}.txt", "w", encoding="utf-8") as file:
         file.write(f"Adınız: {ad} {soyad}\n")
         file.write(f"TC kimlik numaranız: {tc}\n")
@@ -383,7 +400,7 @@ def kişi_bilgileri():
         file.write(f"Uçuşunuz: {kalkış_havalimanı} - {varış_havalimanı}\n")
         file.write(f"Uçuş tarihi: {gün}-{ayı}-{yıl}\n")
         file.write(f"Uçuş saati: {uçuş}\n")
-kişi_bilgileri()  
+kişi_bilgileri()
 
 
 
